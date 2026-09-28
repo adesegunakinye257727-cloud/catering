@@ -1,0 +1,157 @@
+{
+  "entities": {
+    "cinematicHero": {
+      "title": "CinematicHeroConfig",
+      "description": "Configuration and Cloudinary video metadata for the cinematic video animation system",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether the cinematic animation is enabled"
+        },
+        "videoUrl": {
+          "type": "string",
+          "description": "Cloudinary video URL for the animation"
+        },
+        "cloudinaryPublicId": {
+          "type": "string",
+          "description": "Cloudinary public ID of the uploaded video"
+        },
+        "videoName": {
+          "type": "string",
+          "description": "Human-readable name or label of the video"
+        },
+        "scrollControlled": {
+          "type": "boolean",
+          "description": "Whether video playback progress is bound to user scroll position"
+        },
+        "sectionHeight": {
+          "type": "number",
+          "description": "Height of the scrollable section in vh units (e.g. 500)"
+        },
+        "mobileEnabled": {
+          "type": "boolean",
+          "description": "Whether the animation is enabled on mobile viewports"
+        },
+        "desktopEnabled": {
+          "type": "boolean",
+          "description": "Whether the animation is enabled on desktop viewports"
+        }
+      },
+      "required": [
+        "enabled",
+        "videoUrl",
+        "cloudinaryPublicId",
+        "videoName",
+        "scrollControlled",
+        "sectionHeight",
+        "mobileEnabled",
+        "desktopEnabled"
+      ]
+    },
+    "eventTypes": {
+      "title": "EventTypesConfig",
+      "description": "Configuration and image cards for the What Are You Planning event types section",
+      "type": "object",
+      "properties": {
+        "cards": {
+          "type": "array",
+          "description": "List of event type cards",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "description": { "type": "string" },
+              "imageUrl": { "type": "string" },
+              "cloudinaryPublicId": { "type": "string" },
+              "order": { "type": "number" },
+              "enabled": { "type": "boolean" },
+              "tag": { "type": "string" },
+              "ctaText": { "type": "string" },
+              "whatsappMessage": { "type": "string" }
+            },
+            "required": ["id", "title", "description", "imageUrl", "order", "enabled"]
+          }
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Last updated timestamp in ISO format"
+        }
+      },
+      "required": ["cards"]
+    },
+    "stats": {
+      "title": "StatsConfig",
+      "description": "Animated statistics displayed on the homepage",
+      "type": "object",
+      "properties": {
+        "eventsCompleted": { "type": "number" },
+        "happyCustomers": { "type": "number" },
+        "yearsOfExperience": { "type": "number" },
+        "happyClients": { "type": "number" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["eventsCompleted", "happyCustomers", "yearsOfExperience", "happyClients"]
+    },
+    "testimonials": {
+      "title": "TestimonialsConfig",
+      "description": "Client testimonials for What Our Clients Say section",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "clientName": { "type": "string" },
+              "testimonial": { "type": "string" },
+              "eventType": { "type": "string" },
+              "clientPhotoUrl": { "type": "string" },
+              "order": { "type": "number" },
+              "active": { "type": "boolean" }
+            },
+            "required": ["id", "clientName", "testimonial", "order", "active"]
+          }
+        },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["items"]
+    },
+    "servicesOffered": {
+      "title": "ServicesOfferedConfig",
+      "description": "Configuration and image cards for the What Oreofe HolluWar Offers services section",
+      "type": "object",
+      "properties": {
+        "services": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "tag": { "type": "string" },
+              "description": { "type": "string" },
+              "whyNeedIt": { "type": "string" },
+              "imageUrl": { "type": "string" },
+              "cloudinaryPublicId": { "type": "string" },
+              "order": { "type": "number" },
+              "enabled": { "type": "boolean" },
+              "whatsappMessage": { "type": "string" }
+            },
+            "required": ["id", "title", "description", "imageUrl", "order", "enabled"]
+          }
+        },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["services"]
+    }
+  },
+  "firestore": {
+    "/websiteContent/{contentId}": {
+      "schema": "cinematicHero",
+      "description": "Website content settings including cinematic hero configuration"
+    }
+  }
+}
